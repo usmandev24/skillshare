@@ -1,0 +1,16 @@
+<h1 class="text-3xl text-accent shadow-accent-content p-16 pb-2">Enter Details To Create Acount</h1>
+<form method="post" action="/user/save" class=" p-8 pt-0 md:p-16 md:pt-0">
+  <label class=" input input-info w-full mt-6 text-xl p-1 ">Name:
+    <input class=" text-secondary" type="text" name="name" value="{{#if edit}}{{name}}{{/if}}" required>
+  </label>
+  <label class=" input input-info w-full mt-6 text-xl p-1">Id:
+    <input class=" text-secondary" type="text" name="id" required>
+  </label>
+  <label class=" input input-info w-full mt-6 text-xl p-1">Email:
+    <input class=" text-secondary" type="email" name="email" required>
+  </label>
+
+  <textarea class=" text-secondary w-full textarea textarea-info mt-6 text-xl p-1" name="body" placeholder="Write About YourSelf (optional)" ></textarea>
+  <div class=" w-max m-auto mt-4">  <input class=" btn btn-primary" type="submit" value="Submit"> </div>
+
+</form>

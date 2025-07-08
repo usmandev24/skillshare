@@ -1,9 +1,17 @@
-<form method="post" action="/user/save">
-<fieldset>Add new user:
-  <br>
-  <label for="user">User name:
-    <input type="text" id="user" name="user">
+<h1 class="text-3xl text-accent shadow-accent-content p-8 pb-2">Add new Skill</h1>
+<form method="post" action="/skill/save" class=" p-8 pt-0 ">
+  <label class=" input input-secondary w-full mt-6 text-xl p-1 ">Name:
+    <input class=" text-secondary" type="text" name="name" required value="{{#if edit}}{{name}}{{/if}}">
   </label>
-  <input type="submit" value="done">
-</fieldset>
+  <label class=" input input-secondary w-full mt-6 text-xl p-1">Key:
+    <input class=" text-secondary" type="text" name="key" required>
+  </label>
+  <label class=" input input-secondary w-full mt-6 text-xl p-1">Title:
+    <input class=" text-secondary" type="text" name="title" required>
+  </label>
+  
+  <textarea  class=" text-secondary w-full textarea textarea-secondary mt-6 text-xl p-1"
+    placeholder="Enter datails" name="body" required></textarea>
+  <div class=" w-max m-auto mt-4">  <input class=" btn btn-primary" type="submit" value="Submit"> </div>
+
 </form>

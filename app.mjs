@@ -5,22 +5,25 @@ import { default as cookieParser } from 'cookie-parser';
 import { default as logger } from 'morgan';
 import { default as bodyParser } from 'body-parser'
 import { router as indexRouter } from './routes/index.mjs';
+import { router as skillRouter } from './routes/skillRouts.mjs';
+import { router as userRouter } from './routes/user.mjs';
 
-import { default as handlebars } from "hbs";
+import { default as hbs } from "hbs";
 import { default as DBG } from "debug";
 
 import { normalizePort, create404, handleError, onError, onListening } from "./appsupport.mjs";
-
+import * as url from 'url'
+const filename = url.fileURLToPath(import.meta.url)
 
 export const app = express();
 const debug = DBG("skillshare:debug");
 const dbgerror = DBG("skillshare:error");
-const __dirname = import.meta.dirname ;                debug(__dirname)
+const __dirname = path.dirname(filename) ;                debug(__dirname)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-handlebars.registerPartials(path.join(__dirname, 'views', 'partials'));
+hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 
 
 app.use(logger('dev'));
@@ -30,7 +33,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-
+app.use('/skill', skillRouter);
+app.use('/user', userRouter)
 
 app.use(create404);
 app.use(handleError);
