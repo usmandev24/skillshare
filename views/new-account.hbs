@@ -1,16 +1,33 @@
-<h1 class="text-3xl text-accent shadow-accent-content p-16 pb-2">Enter Details To Create Acount</h1>
-<form method="post" action="/user/save" class=" p-8 pt-0 md:p-16 md:pt-0">
+<h1 class="text-3xl text-accent shadow-accent-content p-8  pb-2">{{heading}}</h1>
+
+<form method="post" action="/user/{{#if new}}save{{else}}update{{/if}}" class=" p-6 pt-0  md:pt-0">
+{{> war }}
   <label class=" input input-info w-full mt-6 text-xl p-1 ">Name:
-    <input class=" text-secondary" type="text" name="name" value="{{#if edit}}{{name}}{{/if}}" required>
+    <input class=" text-secondary" type="text" name="name" value="{{#if user}}{{user.name}}{{/if}}" required {{#if
+      notEdit}} disabled {{/if}}>
   </label>
   <label class=" input input-info w-full mt-6 text-xl p-1">Id:
-    <input class=" text-secondary" type="text" name="id" required>
+    <input class=" text-secondary" type="text" name="id" value="{{#if user}}{{user.id}}{{/if}}" required {{#if notEdit}}
+      disabled {{/if}}>
+  </label>
+  <label class=" input input-info w-full mt-6 text-xl p-1">Password:
+    <input class=" text-secondary" type="text" name="password" value="{{#if user}}{{user.password}}{{/if}}" required
+      {{#if notEdit}} disabled {{/if}}>
   </label>
   <label class=" input input-info w-full mt-6 text-xl p-1">Email:
-    <input class=" text-secondary" type="email" name="email" required>
+    <input class=" text-secondary" type="email" name="email" placeholder="(optional)"
+      value="{{#if user.email}}{{user.email}}{{/if}}" {{#if notEdit}} disabled {{/if}}>
   </label>
 
-  <textarea class=" text-secondary w-full textarea textarea-info mt-6 text-xl p-1" name="body" placeholder="Write About YourSelf (optional)" ></textarea>
-  <div class=" w-max m-auto mt-4">  <input class=" btn btn-primary" type="submit" value="Submit"> </div>
+  <textarea class=" text-secondary w-full textarea textarea-info mt-6 text-xl p-1" name="about"
+    placeholder="Write About YourSelf (optional)"   {{#if
+    notEdit}} disabled {{/if}}>{{#if user.about}}{{user.about}}{{/if}}</textarea>
+  <div class=" w-max m-auto mt-4 ga"> <input class=" btn btn-info" type="submit"
+      value="{{#if editing}}Update{{else}}Submit{{/if}}" {{#if notEdit}} hidden {{/if}}> 
+      <a class="btn btn-error" href="/?user={{#if user}}{{user.id}}{{/if}}" {{#if notEdit}} hidden {{/if}}>Cancle</a>
+      </div>
 
 </form>
+<div {{#if new}} hidden {{/if}} {{#if editing}} hidden {{/if}} class=" w-max m-auto flex flex-row  justify-items-center gap-4">
+  <a class="btn btn-warning" href="/user/edit/?user={{user.id}}">Change</a>
+  <a class="btn btn-error" href="/?user=" {{#if editing}} hidden {{/if}}>LogOut</a></div>

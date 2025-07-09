@@ -6,7 +6,8 @@ import { default as logger } from 'morgan';
 import { default as bodyParser } from 'body-parser'
 import { router as indexRouter } from './routes/index.mjs';
 import { router as skillRouter } from './routes/skillRouts.mjs';
-import { router as userRouter } from './routes/user.mjs';
+import { router as userRouter } from './routes/userRouts.mjs';
+import { approotdir } from './approotdir.mjs';
 
 import { default as hbs } from "hbs";
 import { default as DBG } from "debug";
@@ -16,6 +17,7 @@ import * as url from 'url'
 const filename = url.fileURLToPath(import.meta.url)
 
 export const app = express();
+export const usersdir = path.join(approotdir, 'secret','userData.json');
 const debug = DBG("skillshare:debug");
 const dbgerror = DBG("skillshare:error");
 const __dirname = path.dirname(filename) ;                debug(__dirname)

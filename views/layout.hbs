@@ -10,6 +10,15 @@
 
 <body class=" max-w-4xl m-auto shadow-2xl ">
   {{> header }}
+  
   {{{body}}}
+<script>
+  let wardiv = document.getElementById('war-div');
+  let warbtn = document.getElementById('war-btn');
+  warbtn.addEventListener("click", function() {
+    
+    wardiv.classList.add("hidden")
+  })
+</script>
 </body>
 </html> 
