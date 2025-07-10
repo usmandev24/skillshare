@@ -1,7 +1,9 @@
 <h1 class="text-3xl text-accent shadow-accent-content p-8 pb-2">Add new Skill</h1>
-<form method="post" action="/skill/udate" class=" p-6 pt-0 ">
+<form method="get" action="/skill/update" class=" p-6 pt-0 ">
   <label class=" input input-secondary w-full mt-6 text-xl p-1">Name:
-    <input class=" text-secondary" type="text" name="key" disabled value="{{skill.name}}">
+    <input class=" text-secondary" type="text" name="" disabled value="{{skill.name}}">
+    <input class=" text-secondary" type="text" name="name" hidden value="{{skill.name}}">
+   <input class=" text-secondary" type="text" name="user" hidden value="{{user.id}}">
   </label>
   <label class=" input input-secondary w-full mt-6 text-xl p-1">Key:
     <input class=" text-secondary" type="text" name="" disabled value="{{skill.key}}">

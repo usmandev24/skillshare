@@ -2,11 +2,11 @@
   class="navbar text-primary max-w-4xl bg-base-300 m-auto rounded-lg justify-center"
 >
   <div class="navbar-start ml-2"><a
-      href="/?user={{id}}"
+      href="/?user={{user.id}}"
       class="link link-hover text-2xl"
     >Skillshare</a></div>
   <div class="navbar-end gap-2"> 
-    <button class=""><a class="btn btn-circle w-max p-4" href="/user/{{#if user}}?user={{user.id}}{{else}}login{{/if}}"> {{#if id}}{{user.name}}{{else}}Login{{/if}} </a></button>
+    <button class=""><a class="btn btn-circle w-max p-4" href="/user/{{#if user}}?user={{user.id}}{{else}}login{{/if}}"> {{#if user}}{{user.name}}{{else}}Login{{/if}} </a></button>
     <div class="dropdown dropdown-end md:hidden">
       <div class="btn btn-secondary m-1" tabindex="0" role="button"><span class=" rotate-90">|||</span></div>
       <ul class="dropdown-content mt-3 menu w-50 p-2 bg-base-300 rounded-lg" tabindex="0">

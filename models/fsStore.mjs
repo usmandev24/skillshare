@@ -15,8 +15,8 @@ export async function chkDir(dir) {
 }
 
 export class FsStore extends AbstractSkillStore {
-  async create(id, name, key , title, body) {
-    const skill = new Skill(id,name, key, title, body);
+  async create(id, name, key , title, body, comments) {
+    let skill = new Skill(id,name, key, title, body, comments);
 
     await chkDir(fsSotreData);
     await chkDir(path.join(fsSotreData, id));
@@ -25,13 +25,33 @@ export class FsStore extends AbstractSkillStore {
     return skill;
   }
   async read(id, key) {
-    const skilljson = fs.readFile(path.join(fsSotreData, id, key+".json"), 'utf-8')
+    console.log(id, key)
+    const skilljson =await fs.readFile(path.join(fsSotreData, id, key+".json"), 'utf-8')
     .then(data => data)
     .catch(err => {
       throw new Error(err)
-    });
+    }); console.log(skilljson)
     const skillObj = JSON.parse(skilljson);
     return skillObj;
+  }
+  
+  async update(id, name, key , title, body) {
+    const old = await this.read(id, key);
+    const skill = new Skill(id,name, key, title, body, old.comments);
+    await chkDir(fsSotreData);
+    await chkDir(path.join(fsSotreData, id));
+    await fs.writeFile(path.join(fsSotreData, id, key+'.json'), skill.stringify(), 'utf8')
+    .catch(err => { throw new Error(err)})
+    return skill;
+    
+  }
+
+  async addcomment(id, key, cname, cbody) {
+    let old =  await this.read(id, key);
+    let oldcomments = old.comments;
+    oldcomments.push({name: cname, body: cbody});
+    let newskill = await this.create(id, old.name, key, old.title, old.body, oldcomments);
+    return newskill;
   }
 }
 

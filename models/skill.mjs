@@ -21,7 +21,7 @@ export class Skill {
   set title(newTitle) { this.#title = newTitle }
   set body(newbody) { this.#body = newbody }
   addComment(name, body) {
-    this.#comments.push({name: name, comment: body})
+    this.#comments.push({name: name, body: body})
   }
   static fromJSON (skillJSON) {
     const skill = JSON.parse(skillJSON)

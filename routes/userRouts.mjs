@@ -47,7 +47,11 @@ router.get("/login", (req, res, next) => { console.log(typeof(req.query.w))
     res.render('login', { title: 'SkillShare: Login',
       notwar:"ueu", wtype:"error",  war:"No such ID, or password Incorrect"
      })
-  }
+  } else if (req.query.w =="infoskill") {
+    res.render('login', { title: 'SkillShare: Login',
+      notwar:"ueu", wtype:"info",  war:"You need to login first to add skill."
+     })
+    }
   
 })
 
