@@ -20,10 +20,7 @@ export class FsStore extends AbstractSkillStore {
 
     await chkDir(fsSotreData);
     await chkDir(path.join(fsSotreData, id));
-    await chkDir(path.join(approotdir, "FSall"))
-
-    await fs.writeFile(path.join(fsSotreData, id, key+'.json'), skill.stringify(), 'utf8');
-    await fs.writeFile(path.join(approotdir, "FSall", key+'.json'), skill.stringify(), 'utf8')
+    await fs.writeFile(path.join(fsSotreData, id, key+'.json'), skill.stringify(), 'utf8')
     .catch(err => { throw new Error(err)})
     return skill;
   }
