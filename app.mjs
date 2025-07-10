@@ -18,6 +18,7 @@ const filename = url.fileURLToPath(import.meta.url)
 
 export const app = express();
 export const usersdir = path.join(approotdir, 'secret','userData.json');
+export const skillsdir = path.join(approotdir, "fsStoreData");
 const debug = DBG("skillshare:debug");
 const dbgerror = DBG("skillshare:error");
 const __dirname = path.dirname(filename) ;                debug(__dirname)

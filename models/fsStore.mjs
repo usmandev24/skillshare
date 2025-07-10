@@ -38,4 +38,33 @@ export class FsStore extends AbstractSkillStore {
   }
 }
 
+export async function readAllSkills(dir) {
+  let addSkill = [];
+  let folders = await fs.readdir(dir)
+  
+  for (let folder of folders) {
+    let files = await fs.readdir(path.join(dir, folder));
+    for (let file of files) {
+      let skill = await fs.readFile(path.join(dir, folder, file), "utf-8")
+      .then(data => data);
+      skill = JSON.parse(skill)
+      addSkill.push(skill)
+    }
+  }
+  return addSkill
+}
+
+export async function readAutherSkills(id, dir) {
+  let skills = [];
+  const files = await fs.readdir(path.join(dir, id));
+  console.log(files)
+  for (let file of files) {
+      let skill = await fs.readFile(path.join(dir, id, file), "utf-8")
+      .then(data => data);
+      skill = JSON.parse(skill)
+      skills.push(skill)
+    }
+  return skills
+}
+
 

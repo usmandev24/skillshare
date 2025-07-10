@@ -1,10 +1,10 @@
 {{> war }}
 {{#each skills}}
-
+  
   <div class=" max-w-3xl rounded-2xl shadow-2xl bg-base-200 p-4 m-auto mt-2">
-  <h2 class=" text-xl text-accent-content"><a href="/skill/view/?key={{key}}&user={{user.id}}">{{title}}</a></h2>
-  <p>By: <a class=" link link-info inline" href="/user/view/?id={{user.id}}">{{name}}</a></p>
-  <p class=" text-secondary p-1" >{{body}}</p>
+  <h2 class=" text-xl text-accent-content"><a href="/skill/view/?key={{key}}&id{{id}}&user={{../user.id}}">{{title}}</a></h2>
+  <p>By: <a class=" link link-info inline" href="/user/view/?user={{../user.id}}&id={{id}}">{{name}}</a><span class=" text-balance opacity-50 text-sm">  {{id}} </span></p>
+  <p class=" text-secondary p-1  h-[3lh] overflow-hidden" >{{body}}</p>
   </div>
 
 {{/each}} 

@@ -1,9 +1,10 @@
 import { default as express } from 'express';
 import { User, saveUser, readUsers, isUser, auth, getUser } from '../models/user.mjs';
 export const router = express.Router();
+
 import { usersdir as dir } from '../app.mjs';
-
-
+import { readAutherSkills } from '../models/fsStore.mjs';
+import { skillsdir } from '../app.mjs';
 
 router.get('/', async (req, res, next) => {
   try {
@@ -71,7 +72,7 @@ router.get('/edit', async (req, res, next) => {
 router.post("/auth", async (req, res, next) => {
   try {
     if (await auth(req.body.id, req.body.password, dir)) {
-      res.render('index', { title: "skillShare: Home", id: req.body.id });
+      
       res.redirect(`/?user=${req.body.id}&w=success`);
     } else {
       res.redirect(`/user/login/?w=error`)
@@ -105,5 +106,18 @@ router.post("/update", async (req, res, next) => {
     }
   } catch (error) {
     next(error)
+  }
+})
+
+router.get("/view", async (req, res,next ) => {
+  try {
+    const auther =await getUser(req.query.id, dir); console.log(auther.id)
+    const skills =await readAutherSkills(auther.id, skillsdir );
+    res.render("viewUser", {title :"Skillshare: About auther"+auther.name,
+      skills: skills, user: auther, id: req.query.user
+    })
+  } catch (error) {
+    next(error)
+    
   }
 })

@@ -1,0 +1,27 @@
+<div class=" max-h-4xl shadow-2xl p-4">
+  <h1 class=" text-2xl p-4 text-shadow-2xs text-shadow-accent-content">{{skill.title}}</h1>
+  <p class=" pl-4 p-2">By: {{skill.name}}</p>
+  <p class="p-4 ">{{skill.body}}</p>
+  <div class=" bg-base-100 rounded-2xl p-4">
+    {{#each comment}}
+    <div class="p-2 bg-base-200">
+      <p class="m-1">{{body}}</p>
+      <p class="m-1">By: {{name}}</p>
+    </div>
+    {{/each}}
+  </div>
+  <div class=" p-6 rounded-2xl bg-base-200">
+    <h2 class="p-2">Add comment:</h2>
+    <form  method="get" action="/skill/comment/add">
+    <label class=" input input-info w-full">Name:
+      <input type="text" name="name" required>
+    </label>
+    <label class=" input input-info w-full">Comment:
+      <input type="text" name="comment" required>
+    </label>
+    <input class=" btn btn-neutral" type="submit" value="Add comment">
+    </form>
+  </div>
+
+
+</div>

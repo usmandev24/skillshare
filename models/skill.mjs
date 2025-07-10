@@ -4,12 +4,14 @@ export class Skill {
   #title;
   #body;
   #id;
-  constructor(id, name, key, title, body) {
+  #comments;
+  constructor(id, name, key, title, body, comments=[]) {
     this.#id = id;
     this.#name = name;
     this.#key = key;
     this.#body = body;
-    this.#title = title
+    this.#title = title;
+    this.#comments = comments;
   }
   get id() { return this.#id}
   get name() { return this.#name}
@@ -18,13 +20,15 @@ export class Skill {
   get body() { return this.#body }
   set title(newTitle) { this.#title = newTitle }
   set body(newbody) { this.#body = newbody }
-
+  addComment(name, body) {
+    this.#comments.push({name: name, comment: body})
+  }
   static fromJSON (skillJSON) {
     const skill = JSON.parse(skillJSON)
-    return new skill(skill.id, skill.name, skill.key, skill.title, skill.body)
+    return new skill(skill.id, skill.name, skill.key, skill.title, skill.body, skill.comments)
   }
    stringify()  {
-    return JSON.stringify({id: this.#id, name: this.#name, key: this.#key, title: this.#title, body: this.#body})
+    return JSON.stringify({id: this.#id, name: this.#name, key: this.#key, title: this.#title, body: this.#body, comments : this.#comments})
    }
 }
 
