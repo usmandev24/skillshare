@@ -4,7 +4,6 @@ import { AbstractSkillStore } from './skill.mjs';
 import { approotdir } from '../approotdir.mjs';
 import * as path from 'path';
 
-
 const fsSotreData = path.join(approotdir,"FsStoreData");
 export async function chkDir(dir) {
   try {
@@ -17,20 +16,19 @@ export async function chkDir(dir) {
 export class FsStore extends AbstractSkillStore {
   async create(id, name, key , title, body, comments) {
     let skill = new Skill(id,name, key, title, body, comments);
-
     await chkDir(fsSotreData);
     await chkDir(path.join(fsSotreData, id));
     await fs.writeFile(path.join(fsSotreData, id, key+'.json'), skill.stringify(), 'utf8')
     .catch(err => { throw new Error(err)})
     return skill;
   }
+
   async read(id, key) {
-    console.log(id, key)
     const skilljson =await fs.readFile(path.join(fsSotreData, id, key+".json"), 'utf-8')
     .then(data => data)
     .catch(err => {
       throw new Error(err)
-    }); console.log(skilljson)
+    }); 
     const skillObj = JSON.parse(skilljson);
     return skillObj;
   }
@@ -75,7 +73,6 @@ export async function readAllSkills(dir) {
 export async function readAutherSkills(id, dir) {
   let skills = [];
   const files = await fs.readdir(path.join(dir, id));
-  console.log(files)
   for (let file of files) {
       let skill = await fs.readFile(path.join(dir, id, file), "utf-8")
       .then(data => data);

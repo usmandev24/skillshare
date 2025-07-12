@@ -22,7 +22,7 @@ router.get('/',async function (req, res, next) {
       title: 'Skillshare', id: req.query.user,skills: skills,user:user,
       notwar: "no", wtype: "info", war: " Logout Successfull."
     });
-  }
+  } else
     res.render('index', { title: 'Skillshare', id: req.query.user, skills: skills, user: user });
 });
 

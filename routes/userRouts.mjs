@@ -2,14 +2,14 @@ import { default as express } from 'express';
 import { User, saveUser, readUsers, isUser, auth, getUser } from '../models/user.mjs';
 export const router = express.Router();
 
-import { usersdir as dir } from '../app.mjs';
+import { usersdir} from '../app.mjs';
 import { readAutherSkills } from '../models/fsStore.mjs';
 import { skillsdir } from '../app.mjs';
 
 router.get('/', async (req, res, next) => {
   try {
-    const user = await getUser(req.query.user, dir);
-    console.log(user)
+    const user = await getUser(req.query.user, usersdir);
+
     if (user) {
       res.render("new-account", {
         title: 'Skillshare: about ' + user.id, notEdit: true, user: user, id: user.id,
@@ -36,7 +36,7 @@ router.get("/new-account", (req, res, next) => {
   }
 })
 
-router.get("/login", (req, res, next) => { console.log(typeof(req.query.w))
+router.get("/login", (req, res, next) => { 
   if (!req.query.w) {
     res.render('login', { title: 'SkillShare: Login' })
   } else if (req.query.w =="info") {
@@ -57,8 +57,8 @@ router.get("/login", (req, res, next) => { console.log(typeof(req.query.w))
 
 router.get('/edit', async (req, res, next) => {
   try {
-    const user = await getUser(req.query.user, dir);
-    console.log(user)
+    const user = await getUser(req.query.user, usersdir);
+    
     if (user) {
       res.render("new-account", {
         title: 'Skillshare: Update:' + user.id, notEdit: false, editing: true, user: user,
@@ -73,9 +73,10 @@ router.get('/edit', async (req, res, next) => {
   }
 })
 
+
 router.post("/auth", async (req, res, next) => {
   try {
-    if (await auth(req.body.id, req.body.password, dir)) {
+    if (await auth(req.body.id, req.body.password, usersdir)) {
       
       res.redirect(`/?user=${req.body.id}&w=success`);
     } else {
@@ -89,8 +90,8 @@ router.post("/auth", async (req, res, next) => {
 router.post("/save", async (req, res, next) => {
   try {
     let user = new User(req.body.name, req.body.id, req.body.password, req.body.email, req.body.about);
-    if (!await isUser(req.body.id, dir)) {
-      await saveUser(user, dir);
+    if (!await isUser(req.body.id, usersdir)) {
+      await saveUser(user, usersdir);
       res.redirect("/user/login/?w=info");
     } else {
       res.redirect('/user/new-account/?w=error')
@@ -102,8 +103,8 @@ router.post("/save", async (req, res, next) => {
 router.post("/update", async (req, res, next) => {
   try {
     let user = new User(req.body.name, req.body.id, req.body.password, req.body.email, req.body.about);
-    if (await isUser(req.body.id, dir)) {
-      await saveUser(user, dir);
+    if (await isUser(req.body.id, usersdir)) {
+      await saveUser(user, usersdir);
       res.redirect("/user/?user=" + user.id);
     } else {
       res.redirect("/user/?user=" + user.id)
@@ -117,9 +118,9 @@ router.get("/view", async (req, res,next ) => {
   try {
     let user;
     if (req.query.user) {
-      user = await getUser(req.query.user)
+      user = await getUser(req.query.user, usersdir )
     }
-    const auther =await getUser(req.query.id, dir); console.log(auther.id)
+    const auther =await getUser(req.query.id, usersdir); 
     const skills =await readAutherSkills(auther.id, skillsdir );
     res.render("viewUser", {title :"Skillshare: About auther"+auther.name,
       skills: skills, auther: auther, user :  user

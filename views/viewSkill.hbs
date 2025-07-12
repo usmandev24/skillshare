@@ -1,6 +1,6 @@
 <div class=" max-h-4xl shadow-2xl p-4">
   <h1 class=" text-2xl p-4 text-shadow-2xs text-shadow-accent-content">{{skill.title}}</h1>
-  <p class="p-1 pl-4">By: <a class=" link link-info  inline" href="/user/view/?user={{../user.id}}&id={{skill.id}}">{{skill.name}}</a><span class=" text-balance opacity-50 text-sm">  {{skill.id}} </span></p>
+  <p class="p-1 pl-4">By: <a class=" link link-info  inline" href="/user/view/?user={{user.id}}&id={{skill.id}}">{{skill.name}}</a><span class=" text-balance opacity-50 text-sm">  {{skill.id}} </span></p>
   <p class="p-4 text-lg ">{{skill.body}}</p>
   <div class=" w-max m-2 p-2" {{#if self}}{{else}} hidden {{/if}}>
    <button><a class=" btn btn-secondary" href="/skill/edit/?key={{skill.key}}&user={{user.id}}">Edit</a></button> 
