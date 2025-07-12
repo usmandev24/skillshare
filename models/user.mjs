@@ -46,7 +46,7 @@ userData = JSON.parse(userData);
 
 export async function isUser(id, path) {
   let userData = await readUsers(path);
-  if (userData[id] === undefined) { console.log('turye')
+  if (userData[id] === undefined) { 
     return false; 
   } 
   return true;

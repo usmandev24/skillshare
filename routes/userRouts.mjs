@@ -115,10 +115,14 @@ router.post("/update", async (req, res, next) => {
 
 router.get("/view", async (req, res,next ) => {
   try {
+    let user;
+    if (req.query.user) {
+      user = await getUser(req.query.user)
+    }
     const auther =await getUser(req.query.id, dir); console.log(auther.id)
     const skills =await readAutherSkills(auther.id, skillsdir );
     res.render("viewUser", {title :"Skillshare: About auther"+auther.name,
-      skills: skills, user: auther, id: req.query.user
+      skills: skills, auther: auther, user :  user
     })
   } catch (error) {
     next(error)
