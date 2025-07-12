@@ -8,7 +8,7 @@ import { usersdir } from '../app.mjs';
 export const router = express.Router();
 
 const skillsdir = path.join(approotdir, "FsStoreData")
-/* GET home page. */
+/* GET home page. ksj*/
 router.get('/',async function (req, res, next) {
   const skills = await readAllSkills(skillsdir);
   const user = await getUser(req.query.user, usersdir)
