@@ -57,6 +57,7 @@ export class FsStore extends AbstractSkillStore {
 
 export async function readAllSkills(dir) {
   let addSkill = [];
+  await chkDir(dir);
   let folders = await fs.readdir(dir)
   
   for (let folder of folders) {
