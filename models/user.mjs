@@ -1,5 +1,7 @@
 import * as fs from "node:fs/promises";
-
+import { chkDir } from "./fsStore.mjs";
+import path from "node:path";
+import { approotdir } from "../approotdir.mjs";
 export class User {
   #name;
   #id;
@@ -24,8 +26,9 @@ export class User {
     return {id: this.#id, name: this.#name, password: this.#password, email: this.#email, about: this.#about}
   }
 }
-
+await chkDir(path.join(approotdir, "secrets"))
 export async function saveUser(user, path) {
+  
   let userData = await readUsers(path);
   userData[user.id] = user.obj;
   await fs.writeFile(path, JSON.stringify(userData), "utf-8")

@@ -5,7 +5,7 @@ import { approotdir } from '../approotdir.mjs';
 import * as path from 'path';
 
 
-const fsSotreData = path.join(approotdir,"fsStoreData");
+const fsSotreData = path.join(approotdir,"FsStoreData");
 export async function chkDir(dir) {
   try {
     const status = await fs.stat(dir);

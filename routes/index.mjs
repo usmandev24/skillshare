@@ -7,7 +7,7 @@ import { usersdir } from '../app.mjs';
 
 export const router = express.Router();
 
-const skillsdir = path.join(approotdir, "fsStoreData")
+const skillsdir = path.join(approotdir, "FsStoreData")
 /* GET home page. */
 router.get('/',async function (req, res, next) {
   const skills = await readAllSkills(skillsdir);
