@@ -755,6 +755,9 @@
   .mt-0 {
     margin-top: calc(var(--spacing) * 0);
   }
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -773,17 +776,32 @@
   .mt-\[-1rem\] {
     margin-top: -1rem;
   }
+  .mr-0 {
+    margin-right: calc(var(--spacing) * 0);
+  }
+  .mr-\[-1rem\] {
+    margin-right: -1rem;
+  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
   }
+  .ml-1 {
+    margin-left: calc(var(--spacing) * 1);
+  }
   .ml-2 {
     margin-left: calc(var(--spacing) * 2);
   }
   .ml-4 {
     margin-left: calc(var(--spacing) * 4);
+  }
+  .ml-6 {
+    margin-left: calc(var(--spacing) * 6);
+  }
+  .ml-\[-1rem\] {
+    margin-left: -1rem;
   }
   .ml-auto {
     margin-left: auto;
@@ -875,20 +893,26 @@
     width: var(--size);
     height: var(--size);
   }
+  .h-4 {
+    height: calc(var(--spacing) * 4);
+  }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
   .h-6 {
     height: calc(var(--spacing) * 6);
+  }
+  .h-8 {
+    height: calc(var(--spacing) * 8);
   }
   .h-\[3lh\] {
     height: 3lh;
   }
-  .w-6 {
-    width: calc(var(--spacing) * 6);
+  .w-8 {
+    width: calc(var(--spacing) * 8);
   }
   .w-40 {
     width: calc(var(--spacing) * 40);
-  }
-  .w-50 {
-    width: calc(var(--spacing) * 50);
   }
   .w-fit {
     width: fit-content;
@@ -907,9 +931,6 @@
   }
   .max-w-\[54rem\] {
     max-width: 54rem;
-  }
-  .shrink-0 {
-    flex-shrink: 0;
   }
   .rotate-90 {
     rotate: 90deg;
@@ -935,6 +956,12 @@
   }
   .flex-row {
     flex-direction: row;
+  }
+  .items-baseline {
+    align-items: baseline;
+  }
+  .items-center {
+    align-items: center;
   }
   .justify-center {
     justify-content: center;
@@ -991,6 +1018,9 @@
   .border-accent {
     border-color: var(--color-accent);
   }
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
   .bg-base-100 {
     background-color: var(--color-base-100);
   }
@@ -999,9 +1029,6 @@
   }
   .bg-base-300 {
     background-color: var(--color-base-300);
-  }
-  .stroke-current {
-    stroke: currentcolor;
   }
   .p-1 {
     padding: calc(var(--spacing) * 1);
@@ -1035,6 +1062,12 @@
   }
   .pl-4 {
     padding-left: calc(var(--spacing) * 4);
+  }
+  .align-baseline {
+    vertical-align: baseline;
+  }
+  .align-middle {
+    vertical-align: middle;
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -1074,6 +1107,17 @@
       }
     }
   }
+  .link-primary {
+    color: var(--color-primary);
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-primary);
+        @supports (color: color-mix(in lab, red, red)) {
+          color: color-mix(in oklab, var(--color-primary) 80%, #000);
+        }
+      }
+    }
+  }
   .text-accent {
     color: var(--color-accent);
   }
@@ -1085,6 +1129,9 @@
   }
   .text-primary {
     color: var(--color-primary);
+  }
+  .text-primary-content {
+    color: var(--color-primary-content);
   }
   .text-secondary {
     color: var(--color-secondary);
@@ -1108,6 +1155,9 @@
   }
   .underline {
     text-decoration-line: underline;
+  }
+  .opacity-30 {
+    opacity: 30%;
   }
   .opacity-50 {
     opacity: 50%;
@@ -1180,12 +1230,6 @@
   .text-shadow-2xs {
     text-shadow: 0px 1px 0px var(--tw-text-shadow-color, rgb(0 0 0 / 0.15));
   }
-  .text-shadow-accent-content {
-    --tw-text-shadow-color: var(--color-accent-content);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-text-shadow-color: color-mix(in oklab, var(--color-accent-content) var(--tw-text-shadow-alpha), transparent);
-    }
-  }
   .text-shadow-primary {
     --tw-text-shadow-color: var(--color-primary);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1200,6 +1244,21 @@
   .textarea-secondary {
     &, &:focus, &:focus-within {
       --input-color: var(--color-secondary);
+    }
+  }
+  .md\:m-auto {
+    @media (width >= 48rem) {
+      margin: auto;
+    }
+  }
+  .md\:mt-2 {
+    @media (width >= 48rem) {
+      margin-top: calc(var(--spacing) * 2);
+    }
+  }
+  .md\:ml-1 {
+    @media (width >= 48rem) {
+      margin-left: calc(var(--spacing) * 1);
     }
   }
   .md\:hidden {

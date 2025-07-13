@@ -1,18 +1,19 @@
-<nav
-  class="navbar text-primary max-w-4xl bg-base-300 m-auto rounded-lg justify-center"
->
-  <div class="navbar-start ml-2"><a
-      href="/?user={{user.id}}"
-      class="link link-hover text-2xl"
-    >Skillshare</a></div>
-  <div class="navbar-end gap-2"> 
-    <button class=""><a class="btn btn-circle w-max p-4" href="/user/{{#if user}}?user={{user.id}}{{else}}login{{/if}}"> {{#if user}}{{user.name}}{{else}}Login{{/if}} </a></button>
+<nav class="navbar  max-w-4xl bg-base-300 m-auto rounded-lg">
+  <div class="navbar-start md:ml-1 ml-[-1rem] "><a href="/?user={{user.id}}" class=" text-2xl btn btn-ghost"><span
+        class=" w-8 h-6" data-feather="home"></span><span class=" mt-1">Skillshare</span></a></div>
+  <div class="navbar-end gap-2">
+    <button class=""><a class="btn btn-circle w-max p-4"
+        href="/user/{{#if user}}?user={{user.id}}{{else}}login{{/if}}">{{#if user}}<span class=" h-5"
+          data-feather="user"></span>{{user.name}}{{else}}<span class=" h-5" data-feather="log-in"></span> Login{{/if}}
+      </a></button>
     <div class="dropdown dropdown-end md:hidden">
-      <div class="btn btn-secondary m-1" tabindex="0" role="button"><span class=" rotate-90">|||</span></div>
-      <ul class="dropdown-content mt-3 menu w-50 p-2 bg-base-300 rounded-lg" tabindex="0">
-        <li class=" m-auto"><a class=" btn btn-circle w-40 m-1" href="/skill/add/?user={{user.id}}">ADD Skill</a></li>
+      <div class="btn btn-ghost mr-[-1rem] text-secondary" tabindex="0" role="button"><span class=""><span class=" h-5" data-feather="menu"></span> </span></div>
+      <ul class="dropdown-content mt-3 menu w-40 p-2 bg-accent rounded-lg" tabindex="0">
+        <li class=" m-2"><a class=" btn btn-primary" href="/skill/add/?user={{user.id}}"><span class=" h-5"
+              data-feather="plus-circle"></span> ADD Skill</a></li>
       </ul>
     </div>
-    <button class="hidden md:inline-block"><a class="btn btn-secondary" href="/skill/add/?user={{user.id}}">Add Skill</a> </button>
+    <button class="hidden md:inline-block"><a class="btn btn-secondary" href="/skill/add/?user={{user.id}}"><span
+          class=" h-5" data-feather="plus-circle"></span> Add Skill</a> </button>
   </div>
 </nav>

@@ -31,7 +31,7 @@ router.get("/new-account", (req, res, next) => {
         title: 'SkillShare: New Account', new: true,
         heading: "Enter Details To Create Acount",
         notwar: 'yes', wtype: "error",
-        war: "Error: Already This ID exist"
+        war: "⚠️ Error: Already This ID exist"
       })
   }
 })
@@ -41,15 +41,15 @@ router.get("/login", (req, res, next) => {
     res.render('login', { title: 'SkillShare: Login' })
   } else if (req.query.w =="info") {
     res.render('login', { title: 'SkillShare: Login',
-      notwar:"ueu", wtype:"info",  war:"Account created Successfully. Now You can login."
+      notwar:"ueu", wtype:"info",  war:"✅ Account created Successfully. Now You can login."
      })
   } else if (req.query.w == "error") {
     res.render('login', { title: 'SkillShare: Login',
-      notwar:"ueu", wtype:"error",  war:"No such ID, or password Incorrect"
+      notwar:"ueu", wtype:"error",  war:"⚠️ No such ID, or password Incorrect"
      })
   } else if (req.query.w =="infoskill") {
     res.render('login', { title: 'SkillShare: Login',
-      notwar:"ueu", wtype:"info",  war:"You need to login first to add skill."
+      notwar:"ueu", wtype:"info",  war:"🛈 You need to login first to add skill."
      })
     }
   
@@ -63,7 +63,7 @@ router.get('/edit', async (req, res, next) => {
       res.render("new-account", {
         title: 'Skillshare: Update:' + user.id, notEdit: false, editing: true, user: user,
         id: user.id, heading: "Enter Details To Update Account",
-        war: "Do not change Id. Changing Id will create new account  ", notwar: "yes", wtype:"warning"
+        war: "🛈 Do not change Id. Changing Id will create new account  ", notwar: "yes", wtype:"warning"
       })
     } else {
       res.redirect("/?user=");
@@ -78,7 +78,7 @@ router.post("/auth", async (req, res, next) => {
   try {
     if (await auth(req.body.id, req.body.password, usersdir)) {
       
-      res.redirect(`/?user=${req.body.id}&w=success`);
+      res.redirect(`/?user=${req.body.id}&w=success&war=✅ Login Successfully`);
     } else {
       res.redirect(`/user/login/?w=error`)
     }

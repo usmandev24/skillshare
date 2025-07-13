@@ -12,17 +12,12 @@ const skillsdir = path.join(approotdir, "FsStoreData")
 router.get('/',async function (req, res, next) {
   const skills = await readAllSkills(skillsdir);
   const user = await getUser(req.query.user, usersdir)
-  if (req.query.w === "success") {
+  if (req.query.w) {
     res.render('index', {
       title: 'Skillshare', id: req.query.user,skills: skills,user:user,
-      notwar: "no", wtype: "success", war: " Login Successfull."
+      notwar: "no", wtype: req.query.w , war: req.query.war
     });
-  } else if (req.query.w === "info") {
-    res.render('index', {
-      title: 'Skillshare', id: req.query.user,skills: skills,user:user,
-      notwar: "no", wtype: "info", war: " Logout Successfull."
-    });
-  } else
+  }  else
     res.render('index', { title: 'Skillshare', id: req.query.user, skills: skills, user: user });
 });
 

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "DEBUG=skillshare:* node ./app.mjs",
-    "watch" : "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/styles.css --watch",
+    "watch": "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/styles.css --watch",
     "nodemon": "DEBUG=skillshare:* nodemon --ext hbs,mjs,js,css ./app.mjs"
   },
   "dependencies": {
@@ -12,6 +12,7 @@
     "cross-env": "^7.0.3",
     "debug": "^2.6.9",
     "express": "^4.16.1",
+    "feather-icons": "^4.29.2",
     "hbs": "^4.0.4",
     "http-errors": "^1.6.3",
     "morgan": "^1.9.1"

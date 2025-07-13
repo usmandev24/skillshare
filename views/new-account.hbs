@@ -1,7 +1,7 @@
 <h1 class="text-3xl text-accent shadow-accent-content p-8  pb-2">{{heading}}</h1>
 
 <form method="post" action="/user/{{#if new}}save{{else}}update{{/if}}" class=" p-6 pt-0  md:pt-0">
-{{> war }}
+  {{> war }}
   <label class=" input input-info w-full mt-6 text-xl p-1 ">Name:
     <input class=" text-secondary" type="text" name="name" value="{{#if user}}{{user.name}}{{/if}}" required {{#if
       notEdit}} disabled {{/if}}>
@@ -20,14 +20,20 @@
   </label>
 
   <textarea class=" text-secondary w-full textarea textarea-info mt-6 text-xl p-1" name="about"
-    placeholder="Write About YourSelf (optional)"   {{#if
-    notEdit}} disabled {{/if}}>{{#if user.about}}{{user.about}}{{/if}}</textarea>
-  <div class=" w-max m-auto mt-4 ga"> <input class=" btn btn-info" type="submit"
-      value="{{#if editing}}Update{{else}}Submit{{/if}}" {{#if notEdit}} hidden {{/if}}> 
-      <a class="btn btn-error ml-2" href="/?user={{#if user}}{{user.id}}{{/if}}" {{#if notEdit}} hidden {{/if}}>Cancle</a>
-      </div>
+    placeholder="Write About YourSelf (optional)" {{#if notEdit}} disabled
+    {{/if}}>{{#if user.about}}{{user.about}}{{/if}}</textarea>
+  <div class=" w-max m-auto mt-4 ga"><button class=" btn btn-info" {{#if notEdit}} hidden {{/if}}><span class=" h-5" 
+        data-feather="check-circle"></span> {{#if editing}}Update{{else}}Creat Account{{/if}} <input type="submit"
+        value=""></button>
+    <a class="btn btn-error ml-2" href="/?user={{#if user}}{{user.id}}{{/if}}" {{#if notEdit}} hidden {{/if}}><span
+        class=" h-5" data-feather="x-circle"></span> Cancel</a>
+  </div>
 
 </form>
-<div {{#if new}} hidden {{/if}} {{#if editing}} hidden {{/if}} class=" w-max m-auto mt-[-1rem] flex flex-row  justify-items-center gap-2">
-  <a class="btn btn-warning" href="/user/edit/?user={{user.id}}">Change</a>
-  <a class="btn btn-error" href="/?user=&w=info" {{#if editing}} hidden {{/if}}>LogOut</a></div>
+<div {{#if new}} hidden {{/if}} {{#if editing}} hidden {{/if}}
+  class=" w-max m-auto mt-[-1rem] flex flex-row  justify-items-center gap-2">
+  <a class="btn btn-warning" href="/user/edit/?user={{user.id}}"><span class=" h-5"
+      data-feather="edit-2"></span>Change</a>
+  <a class="btn btn-error" href="/?user=&w=info&war=🛈 User Logout completed" {{#if editing}} hidden {{/if}}><span
+      data-feather="log-out" class=" h-5"></span>Logout</a>
+</div>

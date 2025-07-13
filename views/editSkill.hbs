@@ -3,7 +3,7 @@
   <label class=" input input-secondary w-full mt-6 text-xl p-1">Name:
     <input class=" text-secondary" type="text" name="" disabled value="{{skill.name}}">
     <input class=" text-secondary" type="text" name="name" hidden value="{{skill.name}}">
-   <input class=" text-secondary" type="text" name="user" hidden value="{{user.id}}">
+    <input class=" text-secondary" type="text" name="user" hidden value="{{user.id}}">
   </label>
   <label class=" input input-secondary w-full mt-6 text-xl p-1">Key:
     <input class=" text-secondary" type="text" name="" disabled value="{{skill.key}}">
@@ -12,9 +12,10 @@
   <label class=" input input-secondary w-full mt-6 text-xl p-1">Title:
     <input class=" text-secondary" type="text" name="title" required value="{{skill.title}}">
   </label>
-  
-  <textarea  class=" text-secondary w-full textarea textarea-secondary mt-6 text-xl p-1"
-    placeholder="Enter datails" name="body" rows="5" required>{{skill.body}}</textarea>
-  <div class=" w-max m-auto mt-4">  <input class=" btn btn-secondary" type="submit" value="Submit"> </div>
+
+  <textarea class=" text-secondary w-full textarea textarea-secondary mt-6 text-xl p-1" placeholder="Enter datails"
+    name="body" rows="5" required>{{skill.body}}</textarea>
+  <div class=" w-max m-auto mt-4"><button class=" btn btn-info"><span class=" h-5" data-feather="check-circle"></span>Submit <input
+         type="submit" value=""></button> </div>
 
 </form>
