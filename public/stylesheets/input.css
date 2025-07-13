@@ -5,6 +5,6 @@
 @source "../../views/partials/*";
 
 @plugin "daisyui" {
-  themes : abyss --default, dark
+  themes : all
 }
 

@@ -1,9 +1,10 @@
 <div class=" max-h-4xl shadow-2xl p-4">
+  {{> war }}
   <h1 class=" text-2xl text-secondary p-4 text-shadow-2xs ">{{skill.title}}</h1>
   <p class="p-1 pl-4">By: <a class=" link link-info  inline"
       href="/user/view/?user={{user.id}}&id={{skill.id}}">{{skill.name}}</a><span
       class=" text-balance text-info ml-1 opacity-50 text-sm"> ({{skill.id}}) </span></p>
-  <p class="p-4 text-accent-content text-lg ">{{{skill.body}}}</p>
+  <p class="p-4 text-lg ">{{{skill.body}}}</p>
   <div class=" w-max m-2 p-2" {{#if self}}{{else}} hidden {{/if}}>
     <button><a class=" btn btn-secondary" href="/skill/edit/?key={{skill.key}}&user={{user.id}}"><span class=" h-5"
           data-feather="edit"></span> Edit</a></button>
@@ -30,7 +31,7 @@
           data-feather="check-square"></span>Add Comment
         <input type="submit" value=""> </button>
     </form>
-    <div id="war-div" {{#if user}} hidden {{/if}} role="alert" class="  alert alert-{{wtype}} p-2 m-4  mt-2 mb-4">
+    <div id="war-div" {{#if user}} hidden {{/if}} role="alert" class="  alert  p-2 m-4  mt-2 mb-4">
       <span class=" text-md ml-1">🛈 Login first to Add comments</span>
       <button id="war-btn" class=" btn btn-ghost text-2xl ml-auto">⤫</button>
     </div>

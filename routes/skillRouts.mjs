@@ -11,13 +11,14 @@ router.get("/add", async (req, res, next) => {
       res.redirect('/user/login/?w=infoskill');
     }
     const skillslist = (await fstore.getSkillList(req.query.user))
-    .map(item => {
-      console.log(item)
-      return item.replace(".json", " ")
-    }).join(", ");
+      .map(item => {
+        console.log(item)
+        return item.replace(".json", " ")
+      }).join(", ");
     const user = await getUser(req.query.user, dir)
-    res.render("addSkill", { title: 'Add Skill', id: req.query.user, user: user ,
-      wtype:"" , war: `🛈 Always use a uniqe Key for every new skill. Already used Keys:  ${skillslist}`
+    res.render("addSkill", {
+      title: 'Add Skill', id: req.query.user, user: user,
+      wtype: "", war: `🛈 Do not use these words for keys (Already used) --->  ${skillslist}`
     });
   } catch (error) {
     next(error)
@@ -28,9 +29,9 @@ router.get("/add", async (req, res, next) => {
 router.get("/edit", async (req, res, next) => {
   try {
     const user = await getUser(req.query.user, dir);
-    
+
     const skill = await fstore.read(req.query.user, req.query.key);
-    res.render("editSkill", { title: 'Add Skill', user: user, skill:skill});
+    res.render("editSkill", { title: 'Add Skill', user: user, skill: skill });
   } catch (error) {
     next(error)
   }
@@ -42,7 +43,7 @@ router.get("/save", async (req, res, next) => {
     let skill;
     const store = new FsStore;
     skill = await store.create(req.query.user, req.query.name, req.query.key, req.query.title, req.query.body)
-    res.redirect("/?user="+req.query.user+`&w=info&war=✅ New Skill added Successfully`)
+    res.redirect(`/skill/view/?user=${req.query.user}&key=${req.query.key}&id=${req.query.user}&w=info&war=✔️ New Skill Added`)
   } catch (error) {
     next(error)
   }
@@ -53,15 +54,26 @@ router.get("/view", async (req, res, next) => {
     let selfUser;
     const user = await getUser(req.query.user, dir);
     const store = new FsStore;
-    let skill = await store.read(req.query.id,  req.query.key);
-    if(skill.id === req.query.user) {
-      selfUser ="yes";
+    let skill = await store.read(req.query.id, req.query.key);
+    if (skill.id === req.query.user) {
+      selfUser = "yes";
     }
     let body = skill.body;
-    body= body.replace(/\r\n/g, "<br>");
+    body = body.replace(/\r\n/g, "<br>");
     skill.body = body;
-    res.render("viewSkill", {title :`SkillShare:${skill.title}`,
-    skill: skill , user: user, self: selfUser, comments: skill.comments});
+    if (req.query.w) {
+      res.render("viewSkill", {
+        title: `SkillShare:${skill.title}`,
+        skill: skill, user: user, self: selfUser, comments: skill.comments,
+        notwar: "no", wtype: req.query.w, war: req.query.war
+      })
+    } else {
+      res.render("viewSkill", {
+        title: `SkillShare:${skill.title}`,
+        skill: skill, user: user, self: selfUser, comments: skill.comments
+      })
+    }
+    ;
   } catch (error) {
     next(error)
   }
@@ -69,28 +81,28 @@ router.get("/view", async (req, res, next) => {
 
 router.get("/view/addcomment", async (req, res, next) => {
   try {
-    
+
     const store = new FsStore();
     console.log(req.query.name)
     const updated = await store.addcomment(req.query.id, req.query.key, req.query.name, req.query.body)
     res.redirect(`/skill/view/?user=${req.query.user}&key=${req.query.key}&id=${req.query.id}`)
-    
+
   } catch (error) {
     next(error)
   }
 })
 
-router.get("/update",async (req, res, next) => {
+router.get("/update", async (req, res, next) => {
   try {
     const user = await getUser(req.query.user, dir);
     const newskill = await fstore.update(req.query.user, req.query.name, req.query.key, req.query.title, req.query.body)
-    res.redirect(`/skill/view/?user=${req.query.user}&key=${req.query.key}&id=${req.query.user}&w=info`)
+    res.redirect(`/skill/view/?user=${req.query.user}&key=${req.query.key}&id=${req.query.user}&w=info&war=✔️ Skill Update Successfully`)
   } catch (error) {
     next(error)
   }
-} )
+})
 
-router.get("/destroy",async (req, res, next) => {
+router.get("/destroy", async (req, res, next) => {
   try {
     const user = await getUser(req.query.user, dir);
     await fstore.destroy(req.query.user, req.query.key);
@@ -98,7 +110,7 @@ router.get("/destroy",async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-} )
+})
 
 router.get("/view/destroy-comment", async (req, res, next) => {
   try {
