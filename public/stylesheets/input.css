@@ -5,6 +5,7 @@
 @source "../../views/partials/*";
 
 @plugin "daisyui" {
-  themes : all
+  themes : light, cyberpunk, valentine, 
+  winter, abyss, acid, sunset, forest, wireframe, silk, dark
 }
 

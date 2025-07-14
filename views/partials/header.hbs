@@ -1,80 +1,64 @@
 <nav class="navbar  max-w-4xl bg-base-300 m-auto rounded-lg">
-  <div class="navbar-start md:ml-1 ml-[-1rem] "><a href="/?user={{user.id}}"
-      class=" md:text-2xl text-xl btn btn-ghost"><span class=" w-8 h-6" data-feather="home"></span><span
-        class=" mt-1">Skillshare</span></a></div>
+  <div class="navbar-start "><a href="/?user={{user.id}}" class=" md:text-2xl text-xl btn btn-ghost"><span class=" h-6"
+        data-feather="home"></span><span class=" mt-1 md:inline hidden">Skillshare</span></a></div>
   <div class="navbar-end gap-2">
     <div class="dropdown dropdown-end hidden md:inline-block">
-      <div tabindex="0" role="button" class="btn btn-circle m-1"><span class=" h-5" data-feather="settings"></span>
+      <div tabindex="0" role="button" class="btn btn-circle m-1"><span class=" h-5 mt-[-.2rem]"
+          data-feather="settings"></span>
       </div>
       <ul tabindex="0"
         class="menu dropdown-content h-[50vh] z-1  w-42 bg-base-100 rounded-box  overflow-y-scroll p-2 shadow-sm">
         <li>
           <p class=" menu-title">Change Theme</p>
-          <input type="radio" name="theme" class="btn  theme-controller " aria-label="Light" value="light" />
-          <input type="radio" name="theme" class="btn  theme-controller " aria-label="Cupcake" value="cupcake" />
-          <input type="radio" name="theme" class="btn  theme-controller " aria-label="Garden" value="garden" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Retro" value="retro" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Cyberpunk" value="cyberpunk" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Valentine" value="valentine" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Aqua" value="aqua" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Coffee" value="coffee" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Winter" value="winter" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Dim" value="dim" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Abyss" value="abyss" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Acid" value="acid" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Sunset" value="sunset" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Lofi" value="lofi" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Black" value="black" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Forest" value="forest" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Wireframe" value="wireframe" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Silk" value="silk" />
-          <input type="radio" name="theme" class="btn  theme-controller" aria-label="Dark" value="dark" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1 " aria-label="Light" value="light" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Cyberpunk" value="cyberpunk" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Valentine" value="valentine" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Winter" value="winter" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Abyss" value="abyss" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Acid" value="acid" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Sunset" value="sunset" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Forest" value="forest" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Wireframe" value="wireframe" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Silk" value="silk" />
+          <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Dark" value="dark" />
         </li>
       </ul>
     </div>
-    <button class=""><a class="btn btn-circle w-max p-4"
-        href="/user/{{#if user}}?user={{user.id}}{{else}}login{{/if}}">{{#if user}}<span class=" h-5"
-          data-feather="user"></span>{{user.name}}{{else}}<span class=" h-5" data-feather="log-in"></span> Login{{/if}}
+    <button class=""><a class="btn btn-circle w-max p-2"
+        href="/user/{{#if user}}?user={{user.id}}{{else}}login{{/if}}">{{#if user}}<span class=" h-5 mt-[-.2rem]"
+          data-feather="user"></span>{{user.name}}{{else}}<span class=" h-5 mt-[-.2rem]" data-feather="log-in"></span>
+        Login{{/if}}
       </a></button>
     <div class="dropdown dropdown-end md:hidden">
-      <div class="btn btn-ghost mr-[-1rem] text-secondary" tabindex="0" role="button"><span class=""><span class=" h-5"
+      <div class="btn btn-ghost text-secondary" tabindex="0" role="button"><span class=""><span class=" h-5 mt-[-.2rem]"
             data-feather="menu"></span> </span></div>
-      <ul class="dropdown-content mt-3 menu w-40 p-2 bg-accent rounded-lg" tabindex="0">
-        <li class=" m-1"><a class=" btn btn-primary" href="/skill/add/?user={{user.id}}"><span class=" h-5"
+      <ul class="dropdown-content mt-4 menu w-40 p-2 bg-accent rounded-lg" tabindex="0">
+        <li class=" m-1"><a class=" btn btn-primary" href="/skill/add/?user={{user.id}}"><span class=" h-5 mt-[-.2rem]"
               data-feather="plus-circle"></span> ADD Skill</a></li>
-        <li class="mt-0">
-          <div class="dropdown dropdown-left">
-            <div tabindex="0" role="button " class="btn "><span class=" h-5" data-feather="settings"></span>Settings
+        <li class="m-1 mt-1">
+          <div class="dropdown dropdown-left p-0">
+            <div tabindex="0" role="button " class="btn w-full  "><span class=" h-5 mt-[-.2rem]"
+                data-feather="settings"></span>Settings
             </div>
 
             <ul tabindex="0"
-              class="menu dropdown-content h-[50vh] z-1  w-42 bg-base-100 rounded-box  overflow-y-scroll p-2 shadow-sm">
-
-
+              class="menu dropdown-content h-[50vh] z-1 mr-3  w-46 bg-base-300 rounded-box  overflow-y-scroll p-6 shadow-sm">
               <li>
                 <p class=" menu-title">Change Theme</p>
-                <input type="radio" name="theme" class="btn  theme-controller " aria-label="Light" value="light" />
-                <input type="radio" name="theme" class="btn  theme-controller " aria-label="Cupcake" value="cupcake" />
-                <input type="radio" name="theme" class="btn  theme-controller " aria-label="Garden" value="garden" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Retro" value="retro" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Cyberpunk"
+                <input type="radio" name="theme" class="btn  theme-controller m-1 " aria-label="Light" value="light" />
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Cyberpunk"
                   value="cyberpunk" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Valentine"
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Valentine"
                   value="valentine" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Aqua" value="aqua" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Coffee" value="coffee" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Winter" value="winter" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Dim" value="dim" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Abyss" value="abyss" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Acid" value="acid" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Sunset" value="sunset" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Lofi" value="lofi" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Black" value="black" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Forest" value="forest" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Wireframe"
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Winter" value="winter" />
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Abyss" value="abyss" />
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Acid" value="acid" />
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Sunset" value="sunset" />
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Forest" value="forest" />
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Wireframe"
                   value="wireframe" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Silk" value="silk" />
-                <input type="radio" name="theme" class="btn  theme-controller" aria-label="Dark" value="dark" />
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Silk" value="silk" />
+                <input type="radio" name="theme" class="btn  theme-controller m-1" aria-label="Dark" value="dark" />
               </li>
             </ul>
           </div>
@@ -82,6 +66,6 @@
       </ul>
     </div>
     <button class="hidden md:inline-block"><a class="btn btn-secondary" href="/skill/add/?user={{user.id}}"><span
-          class=" h-5" data-feather="plus-circle"></span> Add Skill</a> </button>
+          class=" h-5 mt-[-.2rem]" data-feather="plus-circle"></span> Add Skill</a> </button>
   </div>
 </nav>

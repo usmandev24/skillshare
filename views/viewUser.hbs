@@ -1,18 +1,24 @@
-<div class="max-w-3xl m-auto">
-<h1 class="p-2 text-3xl text-accent">About Auther <span class=" pl-2 underline  uppercase">{{auther.name}}</span></h1>
-<div class="  m-auto mt-2 mb-2 p-4 rounded-2xl border-2 border-accent shadow-4xl">
-<h2 class="text-xl m-2">Name :<span class=" pl-4 text-4xl text-shadow-primary text-secondary">{{auther.name}}</span></h2>
-<hr>
-<p class="m-2">Email :<span class="pl-4">{{auther.email}}</span> </p>
-<p class=" m-2">About :<span class=" text-xl text-secondary-content pl-4"></span> {{auther.about}}</p>
+<div class=" p-4 m-auto">
+<h1 class="p-2 text-3xl text-accent">About Auther </h1>
+<div class="  m-auto mt-2 mb-2 p-2 rounded-2xl border-2 border-accent shadow-4xl">
+<h2 class="text-xl m-2 bg-base-300 p-2 rounded-lg">Name :<span class=" pl-4 text-4xl text-shadow-primary text-secondary">{{auther.name}}</span></h2>
+
+<p class="m-2 bg-base-300 p-2 rounded-lg">Email :<span class="pl-4">{{auther.email}}</span> </p>
+<p class=" m-2 bg-base-300 p-2 rounded-lg">About :<span class=" text-xl text-secondary-content pl-4"></span> {{auther.about}}</p>
 </div>
 <h2 class="p-4 pl-1 text-2xl">Shared Skills:</h2>
 {{#each skills}}
 
-  <div class=" max-w-3xl rounded-2xl shadow-2xl bg-base-200 p-4 m-auto mt-2">
-  <h2 class=" text-xl text-accent-content"><a href="/skill/view/?key={{key}}&id={{id}}&user={{../user.id}}">{{title}}</a></h2>
-  <p>By: <a class=" link link-info inline" >{{name}}</a></p>
-  <p class=" text-secondary p-1" >{{body}}</p>
+<div class=" max-w-[54rem] rounded-2xl shadow-2xl bg-base-200 p-4 md:m-auto md:mt-2 m-1 mt-2">
+  <div class=" flex flex-row justify-items-end">
+    <h2 class=" md:text-2xl text-xl pl-2 "><a class=" link link-hover"
+        href="/skill/view/?key={{key}}&id={{id}}&user={{../user.id}}">{{title}}</a></h2>
+    <a class=" btn btn-ghost  ml-auto" href="/skill/view/?key={{key}}&id={{id}}&user={{../user.id}}"><span class=" h-5 mt-[-.2rem]" data-feather="external-link"></span>view</a>
   </div>
+
+  <p class="p-1 pl-2 ">By: <span class=" text-info">{{name}}</span> <span
+      class=" opacity-30 text-info ml-1 text-sm">({{id}}) </span></p>
+  <p class=" text-secondary p-1 pl-2  h-[3lh] overflow-hidden">{{body}}</p>
+</div>
 
 {{/each}} </div>

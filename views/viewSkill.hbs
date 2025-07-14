@@ -1,4 +1,4 @@
-<div class=" max-h-4xl shadow-2xl p-4">
+<div class=" max-h-4xl shadow-2xl p-2">
   {{> war }}
   <h1 class=" text-2xl text-secondary p-4 text-shadow-2xs ">{{skill.title}}</h1>
   <p class="p-1 pl-4">By: <a class=" link link-info  inline"
@@ -8,7 +8,7 @@
   <div class=" w-max m-2 p-2" {{#if self}}{{else}} hidden {{/if}}>
     <button><a class=" btn btn-secondary" href="/skill/edit/?key={{skill.key}}&user={{user.id}}"><span class=" h-5"
           data-feather="edit"></span> Edit</a></button>
-    <button><a class=" btn btn-warning " href="/skill/destroy/?key={{skill.key}}&user={{user.id}}"><span class=" h-5"
+    <button><a class=" btn btn-warning " href="/skill/destroy/confirm/?key={{skill.key}}&user={{user.id}}"><span class=" h-5"
           data-feather="trash-2"></span> Delete</a></button>
   </div>
 
@@ -18,7 +18,7 @@
       <input type="text" name="id" hidden value="{{skill.id}}">
       <input type="text" name="key" hidden value="{{skill.key}}">
       <input type="text" name="user" hidden value="{{user.id}}">
-
+      
       <label class=" input input-info text-lg w-full mt-2">Name:
         <input class=" text-secondary " type="text" name="name" required {{#if user}} disabled {{/if}}
           value={{user.name}}>
@@ -39,10 +39,9 @@
 
   <hr class=" ml-4">
   <h3 class=" text-2xl pl-4 mt-4  ">Comments</h3>
-  <div class=" bg-base-100 rounded-2xl p-4">
-
+  <div class=" bg-base-300 rounded-2xl p-2 pl-0 m-4 ml-6">
     {{#each comments}}
-    <div class="m-1 p-1 ml-4 bg-base-300 rounded-xl flex flex-row justify-items-end">
+    <div class="m-2 p-1 ml-4 bg-base-100 rounded-xl flex flex-row justify-items-end">
       <div class=" pl-2">
         <p class="m-1 text-lg">{{body}}</p>
         <p class="m-1">By: <span class=" text-secondary">{{name}}</span> </p>

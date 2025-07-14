@@ -2,6 +2,7 @@ import { default as express } from "express";
 import { FsStore } from "../models/fsStore.mjs";
 import { getUser, readUsers } from "../models/user.mjs";
 import { usersdir as dir } from '../app.mjs';
+import { title } from "node:process";
 export const router = express.Router();
 
 const fstore = new FsStore();
@@ -112,6 +113,17 @@ router.get("/destroy", async (req, res, next) => {
   }
 })
 
+router.get("/destroy/confirm", async (req, res, next) => {
+  try {
+    const user = await getUser(req.query.user, dir);
+    const skill = await fstore.read(req.query.user, req.query.key)
+    res.render("delete", {title: "skillshare: confirm delete", 
+      skill: skill, user: user
+    })
+  } catch (error) {
+    next(error)
+  }
+} )
 router.get("/view/destroy-comment", async (req, res, next) => {
   try {
     const user = await getUser(req.query.user, dir);

@@ -1,0 +1,9 @@
+<div class="p-6">
+  <h1 class="text-3xl text-accent shadow-accent-content pb-2">Do you want to permanantly delete:</h1>
+  <div class=" bg-base-200 rounded-2xl p-4">
+    <h1 class=" text-2xl text-secondary p-2 text-shadow-2xs ">{{skill.title}}</h1>
+  <p class="p-2 text-lg ">{{{skill.body}}}</p>
+  </div>
+  <button class=" block m-auto w-max"><a class=" btn btn-error m-2 " href="/skill/destroy/?key={{skill.key}}&user={{user.id}}"><span class=" h-5"
+          data-feather="trash-2"></span> Delete</a></button>
+</div>
