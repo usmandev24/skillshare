@@ -2,24 +2,24 @@
 
 <form method="post" action="/user/{{#if new}}save{{else}}update{{/if}}" class=" p-6 pt-0  md:pt-0">
   {{> war }}
-  <label class=" input input-info w-full mt-6 text-xl p-1 ">Name:
+  <label class=" input input-info w-full mt-6 text-xl p-1 pl-3 ">Name:
     <input class=" text-secondary" type="text" name="name" value="{{#if user}}{{user.name}}{{/if}}" required {{#if
       notEdit}} disabled {{/if}}>
   </label>
-  <label class=" input input-info w-full mt-6 text-xl p-1">Id:
+  <label class=" input input-info w-full mt-6 text-xl p-1 pl-3">Id:
     <input class=" text-secondary" type="text" name="id" value="{{#if user}}{{user.id}}{{/if}}" required {{#if notEdit}}
       disabled {{/if}}>
   </label>
-  <label class=" input input-info w-full mt-6 text-xl p-1">Password:
+  <label class=" input input-info w-full mt-6 text-xl p-1 pl-3">Password:
     <input class=" text-secondary" type="text" name="password" value="{{#if user}}{{user.password}}{{/if}}" required
       {{#if notEdit}} disabled {{/if}}>
   </label>
-  <label class=" input input-info w-full mt-6 text-xl p-1">Email:
+  <label class=" input input-info w-full mt-6 text-xl p-1 pl-3">Email:
     <input class=" text-secondary" type="email" name="email" placeholder="(optional)"
       value="{{#if user.email}}{{user.email}}{{/if}}" {{#if notEdit}} disabled {{/if}}>
   </label>
 
-  <textarea class=" text-secondary w-full textarea textarea-info mt-6 text-xl p-1" name="about"
+  <textarea class=" text-secondary w-full textarea textarea-info mt-6 text-xl p-1 pl-3" name="about"
     placeholder="Write About YourSelf (optional)" {{#if notEdit}} disabled
     {{/if}}>{{#if user.about}}{{user.about}}{{/if}}</textarea>
   <div class=" w-max m-auto mt-4 ga"><button class=" btn btn-info" {{#if notEdit}} hidden {{/if}}><span class=" h-5" 

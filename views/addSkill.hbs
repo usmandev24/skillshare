@@ -2,21 +2,21 @@
 <form method="GET" action="/skill/save" class=" p-6 pt-0 ">
   <input type="text" name="user"  value="{{user.id}}" hidden>
   <input type="text" name="name"  value="{{user.name}}" hidden>
-  <label class=" input input-secondary w-full mt-6 text-xl p-1">Name:
+  <label class=" input input-secondary w-full mt-6 text-xl p-1 pl-3">Name:
     <input class=" text-secondary" type="text" name="" disabled value="{{#if user}}{{user.name}}{{/if}}">
   </label>
   <div id="war-div"  role="alert" class="mt-4  alert alert-{{wtype}} p-2 m-4  mt-2 mb-4">
   <span class=" text-md ml-1">{{war}}</span>
   <button id="war-btn" class=" btn btn-ghost text-2xl ml-auto">⤫</button>
   </div>
-  <label class=" input input-secondary w-full mt-4 text-xl p-1">Key:
+  <label class=" input input-secondary w-full mt-4 text-xl p-1 pl-3">Key:
     <input class=" text-secondary" type="text" name="key" required>
   </label>
-  <label class=" input input-secondary w-full mt-6 text-xl p-1">Title:
+  <label class=" input input-secondary w-full mt-6 text-xl p-1 pl-3">Title:
     <input class=" text-secondary" type="text" name="title" required>
   </label>
   
-  <textarea  class=" text-secondary w-full textarea textarea-secondary mt-6 text-xl p-1"
+  <textarea  class=" text-secondary w-full textarea textarea-secondary mt-6 text-xl p-1 pl-3"
     placeholder="Enter datails" name="body" rows="5" required></textarea>
   <div class=" w-max m-auto mt-4"><button class=" btn btn-info"><span class=" h-5" data-feather="check-circle"></span>Submit <input
          type="submit" value=""></button></div>
