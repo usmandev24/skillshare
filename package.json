@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "DEBUG=skillshare:* node ./app.mjs",
-    "watch": "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/styles.css --watch",
+    "watch": "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/styles.css --watch --minify",
     "nodemon": "DEBUG=skillshare:* nodemon --ext hbs,mjs,js,css ./app.mjs"
   },
   "dependencies": {
