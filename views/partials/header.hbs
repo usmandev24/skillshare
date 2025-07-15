@@ -1,6 +1,6 @@
 <nav class="navbar  max-w-4xl bg-base-300 m-auto rounded-lg">
-  <div class="navbar-start "><a href="/?user={{user.id}}" class=" md:text-2xl text-xl btn btn-ghost"><span class=" h-6"
-        data-feather="home"></span><span class=" mt-1 md:inline hidden">Skillshare</span></a></div>
+  <div class="navbar-start "><a href="/?user={{user.id}}" class=" md:text-2xl text-md btn btn-ghost p-1"><span class=" h-5 md:h-6"
+        data-feather="home"></span><span class=" mt-1">Skillshare</span></a></div>
   <div class="navbar-end gap-2">
     <div class="dropdown dropdown-end hidden md:inline-block">
       <div tabindex="0" role="button" class="btn btn-circle m-1"><span class=" h-5 mt-[-.2rem]"
@@ -24,15 +24,15 @@
         </li>
       </ul>
     </div>
-    <button class=""><a class="btn btn-circle w-max p-2"
+    <button class=""><a class="btn btn-circle w-max p-1 "
         href="/user/{{#if user}}?user={{user.id}}{{else}}login{{/if}}">{{#if user}}<span class=" h-5 mt-[-.2rem]"
           data-feather="user"></span>{{user.name}}{{else}}<span class=" h-5 mt-[-.2rem]" data-feather="log-in"></span>
         Login{{/if}}
       </a></button>
     <div class="dropdown dropdown-end md:hidden">
-      <div class="btn btn-ghost text-secondary" tabindex="0" role="button"><span class=""><span class=" h-5 mt-[-.2rem]"
+      <div class="btn btn-ghost p-1 text-secondary" tabindex="0" role="button"><span class=""><span class=" h-5 mt-[-.2rem]"
             data-feather="menu"></span> </span></div>
-      <ul class="dropdown-content mt-4 menu w-40 p-2 bg-accent rounded-lg" tabindex="0">
+      <ul class="dropdown-content mt-4 menu w-40 p-2 bg-accent-content rounded-lg" tabindex="0">
         <li class=" m-1"><a class=" btn btn-primary" href="/skill/add/?user={{user.id}}"><span class=" h-5 mt-[-.2rem]"
               data-feather="plus-circle"></span> ADD Skill</a></li>
         <li class="m-1 mt-1">

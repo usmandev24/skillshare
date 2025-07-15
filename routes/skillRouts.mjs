@@ -19,7 +19,7 @@ router.get("/add", async (req, res, next) => {
     const user = await getUser(req.query.user, dir)
     res.render("addSkill", {
       title: 'Add Skill', id: req.query.user, user: user,
-      wtype: "", war: `🛈 Do not use these words for keys (Already used) --->  ${skillslist}`
+      wtype: "", war: `ℹ️ Do not use these words for keys (Already used) --->  ${skillslist}`
     });
   } catch (error) {
     next(error)
@@ -107,7 +107,7 @@ router.get("/destroy", async (req, res, next) => {
   try {
     const user = await getUser(req.query.user, dir);
     await fstore.destroy(req.query.user, req.query.key);
-    res.redirect(`/?user=${req.query.user}&w=warning&war=🛈 Skill Deleted!`)
+    res.redirect(`/?user=${req.query.user}&w=warning&war=ℹ️ Skill Deleted!`)
   } catch (error) {
     next(error)
   }

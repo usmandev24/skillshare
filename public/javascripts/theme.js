@@ -16,7 +16,7 @@ function setTheme() {
   if (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches) {
     html.setAttribute("data-theme", "abyss")
   } else if (!("theme" in localStorage)) {
-    html.setAttribute("data-theme", "light")
+    html.setAttribute("data-theme", "abyss")
   } else {
     html.setAttribute("data-theme", `${localStorage.getItem("theme")}`);
   }

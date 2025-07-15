@@ -49,7 +49,7 @@ router.get("/login", (req, res, next) => {
      })
   } else if (req.query.w =="infoskill") {
     res.render('login', { title: 'SkillShare: Login',
-      notwar:"ueu", wtype:"info",  war:"🛈 You need to login first to add skill."
+      notwar:"ueu", wtype:"info",  war:"ℹ️ You need to login first to add skill."
      })
     }
   
@@ -63,7 +63,7 @@ router.get('/edit', async (req, res, next) => {
       res.render("new-account", {
         title: 'Skillshare: Update:' + user.id, notEdit: false, editing: true, user: user,
         id: user.id, heading: "Enter Details To Update Account",
-        war: "🛈 Do not change Id. Changing Id will create new account  ", notwar: "yes", wtype:"warning"
+        war: "ℹ️ Do not change Id. Changing Id will create new account  ", notwar: "yes", wtype:"warning"
       })
     } else {
       res.redirect("/?user=");
